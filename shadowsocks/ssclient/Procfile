@@ -1,0 +1,2 @@
+ssclient: /usr/bin/sslocal -c /etc/shadowsocks.json
+privoxy: /usr/sbin/privoxy --no-daemon --pidfile /run/privoxy.pid --user privoxy /etc/privoxy/config

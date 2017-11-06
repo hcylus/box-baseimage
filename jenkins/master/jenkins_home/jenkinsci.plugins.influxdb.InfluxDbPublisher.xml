@@ -1,0 +1,4 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jenkinsci.plugins.influxdb.DescriptorImpl plugin="influxdb@1.12.3">
+  <targets/>
+</jenkinsci.plugins.influxdb.DescriptorImpl>

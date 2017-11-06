@@ -1,0 +1,13 @@
+version: '2'
+services:
+  jenkins-swarm-agent01:
+    image: 'jenkins/swarm-slave:1.0.0'
+    volumes:
+        - ./secrets/jenkins:/run/secrets/jenkins
+    environment:
+      - EXECUTORS=1
+      - LABELS=abs docker
+    privileged: true
+    restart: always 
+    labels:
+        opstack.prog.name: 'opstack jenkins swarm'

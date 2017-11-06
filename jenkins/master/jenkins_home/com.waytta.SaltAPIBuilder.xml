@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<com.waytta.SaltAPIBuilder_-DescriptorImpl plugin="saltstack@3.1.0">
+  <pollTime>10</pollTime>
+  <minionTimeout>30</minionTimeout>
+  <outputFormat>json</outputFormat>
+</com.waytta.SaltAPIBuilder_-DescriptorImpl>

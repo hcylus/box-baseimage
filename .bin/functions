@@ -1,0 +1,56 @@
+#!/bin/bash
+# vim: set ft=sh:
+error()
+{
+  echo "$@" 1>&2
+  usage_and_exit 1
+}
+
+usage_and_exit()
+{
+  usage
+  exit $1
+}
+
+version()
+{
+  echo "$PROGRAM version $VERSION"
+}
+
+warning()
+{
+  echo "$@" 1>&2
+  EXITCODE=`expr $EXITCODE + 1`
+}
+
+debug_watch()
+{
+  if [ -z ${DEBUG} ]; then
+    return
+  fi
+
+  if [[ $1 == $2 ]]; then
+    debug
+  fi
+}
+
+debug()
+{
+  if [ -z ${DEBUG} ]; then
+    return
+  fi
+  echo "#############|  Entering DEBUG mode  |####################";
+  CMD=""
+  while [[ $CMD != "exit" ]]; do
+    read -p "> " CMD
+    case $CMD in
+      vars)
+        ( set -o posix ; set )
+        ;;
+      exit)
+        ;;
+      * ) eval $CMD;;
+    esac
+  done
+  echo "#############|  End of DEBUG mode |####################";
+}

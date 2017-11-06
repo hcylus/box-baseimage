@@ -1,0 +1,44 @@
+[
+  {
+    "username": "admin", 
+    "password": "admin123", 
+    "workspace": "/home/ftp",
+    "options": [
+      "virtual_use_local_privs=YES",
+      "write_enable=YES",
+      "anon_upload_enable=YES",
+      "anon_world_readable_only=NO",
+      "anon_mkdir_write_enable=YES",
+      "anon_other_write_enable=YES",
+      "local_root=/home/ftp"
+    ]
+  },
+  {
+    "username": "abs", 
+    "password": "abs123", 
+    "workspace": "/home/ftp/JenkinsTasks",
+    "options": [
+      "local_root=/home/ftp/JenkinsTasks",
+      "virtual_use_local_privs=NO",
+      "write_enable=YES",
+      "anon_mkdir_write_enable=YES",
+      "anon_upload_enable=YES",
+      "anon_world_readable_only=NO",
+      "anon_other_write_enable=NO"
+    ]
+  },
+  {
+    "username": "abspkg", 
+    "password": "abspkg", 
+    "workspace": "/home/ftp/JenkinsTasks",
+    "options": [
+      "local_root=/home/ftp/JenkinsTasks",
+      "virtual_use_local_privs=NO",
+      "write_enable=YES",
+      "anon_upload_enable=NO",
+      "anon_world_readable_only=NO",
+      "anon_mkdir_write_enable=NO",
+      "anon_other_write_enable=NO"
+    ]
+  }
+]

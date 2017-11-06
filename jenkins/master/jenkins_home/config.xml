@@ -1,0 +1,139 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<hudson>
+  <disabledAdministrativeMonitors/>
+  <version>2.32.3</version>
+  <numExecutors>0</numExecutors>
+  <mode>NORMAL</mode>
+  <useSecurity>true</useSecurity>
+  <authorizationStrategy class="hudson.security.FullControlOnceLoggedInAuthorizationStrategy">
+    <denyAnonymousReadAccess>true</denyAnonymousReadAccess>
+  </authorizationStrategy>
+  <securityRealm class="hudson.security.HudsonPrivateSecurityRealm">
+    <disableSignup>true</disableSignup>
+    <enableCaptcha>false</enableCaptcha>
+  </securityRealm>
+  <disableRememberMe>false</disableRememberMe>
+  <projectNamingStrategy class="jenkins.model.ProjectNamingStrategy$DefaultProjectNamingStrategy"/>
+  <workspaceDir>${JENKINS_HOME}/workspace/${ITEM_FULLNAME}</workspaceDir>
+  <buildsDir>${ITEM_ROOTDIR}/builds</buildsDir>
+  <markupFormatter class="hudson.markup.EscapedMarkupFormatter"/>
+  <jdks/>
+  <viewsTabBar class="hudson.views.DefaultViewsTabBar"/>
+  <myViewsTabBar class="hudson.views.DefaultMyViewsTabBar"/>
+  <clouds>
+    <com.github.kostyasha.yad.DockerCloud plugin="yet-another-docker-plugin@0.1.0-rc40">
+      <name>test</name>
+      <provisionedImages/>
+      <templates>
+        <com.github.kostyasha.yad.DockerSlaveTemplate>
+          <id>61b80be9-db1f-45fe-b18c-440d6c76f8ba</id>
+          <labelString>docker</labelString>
+          <launcher class="com.github.kostyasha.yad.launcher.DockerComputerSSHLauncher">
+            <sshConnector plugin="ssh-slaves@1.13">
+              <port>22</port>
+              <credentialsId>jenkins-docker-slave-test</credentialsId>
+              <jvmOptions></jvmOptions>
+              <javaPath></javaPath>
+              <maxNumRetries>0</maxNumRetries>
+              <retryWaitTime>0</retryWaitTime>
+            </sshConnector>
+          </launcher>
+          <remoteFs>/home/jenkins</remoteFs>
+          <mode>EXCLUSIVE</mode>
+          <retentionStrategy class="com.github.kostyasha.yad.strategy.DockerOnceRetentionStrategy">
+            <idleMinutes>10</idleMinutes>
+            <idleMinutes defined-in="com.github.kostyasha.yad.strategy.DockerOnceRetentionStrategy">10</idleMinutes>
+          </retentionStrategy>
+          <numExecutors>1</numExecutors>
+          <dockerContainerLifecycle>
+            <image>ccr.ccs.tencentyun.com/jenkins/abs:3.0.0-ssh</image>
+            <pullImage>
+              <pullStrategy>PULL_NEVER</pullStrategy>
+              <credentialsId></credentialsId>
+            </pullImage>
+            <createContainer>
+              <command>&quot;ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDnDDWKF7A86BMDZQOuj2E2AV78eh9qLOctPE1lrjk6xyKfG67EzLfMaKCjGnDhtHNtNvke7QSuWkX4s6B2GkTRA2m78GXX2I/oNg5+jCqdI5x2q1Ay/Y7IlD/BASc0u2ZQ2xylBloUWIjOtcGdxbPLU+UwfTF2ifgYNExhlrwOlZt4xZK01wfHXJT+7YyFQ/RiYqFcZPD6yEcGfEfZ/hib+ldcmO3WJZjocSbjpIFk+/sVY104GkYljV5rc2HJn20gI8VhEXQkFxLQ18KvQo3R7m8tU3CslKVIzGmx/yw1kOWnFGo/yaTpbl5kmTM/bQjUjKJvsfLEjK36FBUeYH6n seanly@SeanLydeMacBook-Pro.local&quot;</command>
+              <hostname></hostname>
+              <dnsHosts class="java.util.Collections$UnmodifiableRandomAccessList" resolves-to="java.util.Collections$UnmodifiableList">
+                <c class="list"/>
+                <list reference="../c"/>
+              </dnsHosts>
+              <volumes class="java.util.Collections$UnmodifiableRandomAccessList" resolves-to="java.util.Collections$UnmodifiableList">
+                <c class="list"/>
+                <list reference="../c"/>
+              </volumes>
+              <volumesFrom class="java.util.Collections$UnmodifiableRandomAccessList" resolves-to="java.util.Collections$UnmodifiableList">
+                <c class="list"/>
+                <list reference="../c"/>
+              </volumesFrom>
+              <environment class="java.util.Collections$UnmodifiableRandomAccessList" resolves-to="java.util.Collections$UnmodifiableList">
+                <c class="list"/>
+                <list reference="../c"/>
+              </environment>
+              <bindPorts></bindPorts>
+              <bindAllPorts>false</bindAllPorts>
+              <memoryLimit>0</memoryLimit>
+              <privileged>false</privileged>
+              <tty>false</tty>
+              <extraHosts class="java.util.Collections$UnmodifiableRandomAccessList" resolves-to="java.util.Collections$UnmodifiableList">
+                <c class="list"/>
+                <list reference="../c"/>
+              </extraHosts>
+              <devices class="java.util.Collections$UnmodifiableRandomAccessList" resolves-to="java.util.Collections$UnmodifiableList">
+                <c class="list"/>
+                <list reference="../c"/>
+              </devices>
+              <cpusetCpus></cpusetCpus>
+              <cpusetMems></cpusetMems>
+              <links class="java.util.Collections$UnmodifiableRandomAccessList" resolves-to="java.util.Collections$UnmodifiableList">
+                <c class="list"/>
+                <list reference="../c"/>
+              </links>
+              <shmSize>0</shmSize>
+              <restartPolicy>
+                <policyName>NO</policyName>
+                <maximumRetryCount>0</maximumRetryCount>
+              </restartPolicy>
+              <workdir></workdir>
+              <user></user>
+            </createContainer>
+            <stopContainer>
+              <timeout>10</timeout>
+            </stopContainer>
+            <removeContainer>
+              <removeVolumes>true</removeVolumes>
+              <force>false</force>
+            </removeContainer>
+          </dockerContainerLifecycle>
+          <maxCapacity>10</maxCapacity>
+        </com.github.kostyasha.yad.DockerSlaveTemplate>
+      </templates>
+      <containerCap>50</containerCap>
+      <connector>
+        <serverUrl>tcp://10.34.57.11:2375</serverUrl>
+        <apiVersion>1.24</apiVersion>
+        <credentialsId></credentialsId>
+        <connectorType>NETTY</connectorType>
+      </connector>
+    </com.github.kostyasha.yad.DockerCloud>
+  </clouds>
+  <quietPeriod>5</quietPeriod>
+  <scmCheckoutRetryCount>0</scmCheckoutRetryCount>
+  <views>
+    <hudson.model.AllView>
+      <owner class="hudson" reference="../../.."/>
+      <name>all</name>
+      <filterExecutors>false</filterExecutors>
+      <filterQueue>false</filterQueue>
+      <properties class="hudson.model.View$PropertyList"/>
+    </hudson.model.AllView>
+  </views>
+  <primaryView>all</primaryView>
+  <slaveAgentPort>50000</slaveAgentPort>
+  <label></label>
+  <crumbIssuer class="hudson.security.csrf.DefaultCrumbIssuer">
+    <excludeClientIPFromCrumb>false</excludeClientIPFromCrumb>
+  </crumbIssuer>
+  <nodeProperties/>
+  <globalNodeProperties/>
+</hudson>

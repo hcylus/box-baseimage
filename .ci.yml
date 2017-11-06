@@ -1,0 +1,25 @@
+---
+version: '1.0'
+
+box: dockerbuild
+name: boxbase
+
+stages:
+  - name: buildSwarm
+    tasks:
+      - task.id: customtask
+        type: cmdline
+        workdir: ${ws.dir}
+        command: make push-jenkins/swarm-slave
+  - name: buildSsh
+    tasks:
+      - task.id: customtask
+        type: cmdline
+        workdir: ${ws.dir}
+        command: make push-jenkins/ssh-slave
+
+pipelines:
+  - name: dev
+    stages:
+      - buildSwarm
+      - buildSsh

@@ -1,0 +1,35 @@
+# Copyright (c) 2016-present Sonatype, Inc.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+FROM centos:7.3.1611
+
+MAINTAINER SeanLy <ops@mail.opstack.xyz>
+
+LABEL vendor=Opstack
+
+RUN yum -y install epel-release \
+  && yum -y install python-pip libsodium \
+  && pip install shadowsocks==2.8.2 \
+  && yum -y install privoxy \
+  && pip install honcho 
+
+COPY ./shadowsocks.json /etc/shadowsocks.json
+COPY ./privoxy.config /etc/privoxy/config
+COPY ./Procfile /Procfile
+
+ENV PYTHONIOENCODING "utf-8"
+
+WORKDIR /
+
+CMD honcho start

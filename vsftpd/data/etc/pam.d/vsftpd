@@ -1,0 +1,4 @@
+ # PAM
+ auth         required    pam_listfile.so     item=user sense=deny file=/etc/vsftpd/ftpusers onerr=fail
+ auth         required    pam_userdb.so       db=/etc/vsftpd/vusers
+ account      required    pam_userdb.so       db=/etc/vsftpd/vusers
